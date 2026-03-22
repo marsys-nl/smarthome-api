@@ -7,6 +7,11 @@ jvm-toolchain = "21"
 
 kotlin = "2.3.20"
 
+ktlint = "1.8.0"
+
+[libraries]
+ktlint = { group = "com.pinterest.ktlint", name = "ktlint-cli", version.ref = "ktlint" }
+
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 

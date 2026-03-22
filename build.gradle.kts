@@ -1,3 +1,36 @@
 plugins {
+    alias(libs.plugins.detekt) apply true
     alias(libs.plugins.kotlin.multiplatform) apply false
+}
+
+val ktlint: Configuration by configurations.creating
+
+dependencies {
+    ktlint(libs.ktlint) {
+        attributes {
+            attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
+        }
+    }
+}
+
+detekt {
+    allRules = true
+    buildUponDefaultConfig = true
+    config.from("$rootDir/config/detekt/detekt.yml")
+
+    source.from(
+        "$rootDir/api/src/commonMain/kotlin",
+    )
+}
+
+tasks.register("ktlintCheck", JavaExec::class) {
+    group = LifecycleBasePlugin.VERIFICATION_GROUP
+    description = "Check Kotlin code style"
+    classpath = ktlint
+    mainClass.set("com.pinterest.ktlint.Main")
+    args(
+        "**.kt",
+        "**.kts",
+        "!**/build/**",
+    )
 }

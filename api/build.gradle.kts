@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "network.marsys.smarthome.api.models"
-version = libs.versions.smarthome.domain.version.get()
+version = libs.versions.smarthome.api.get()
 
 kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())

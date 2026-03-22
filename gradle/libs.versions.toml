@@ -1,5 +1,7 @@
 [versions]
-smarthome-domain-version = "2026.03-SNAPSHOT"
+smarthome-api = "2026.03-SNAPSHOT"
+
+detekt = "2.0.0-alpha.2"
 
 jvm-toolchain = "21"
 
@@ -7,3 +9,5 @@ kotlin = "2.3.20"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+detekt = { id = "dev.detekt", version.ref = "detekt" }

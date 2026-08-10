@@ -1,5 +1,6 @@
 [versions]
-smarthome-api = "2026.03-SNAPSHOT"
+smarthome-api = "2026.08-SNAPSHOT"
+smarthome-domain = "2026.08-SNAPSHOT"
 
 detekt = "2.0.0-alpha.6"
 
@@ -16,6 +17,8 @@ maven-publish = "0.37.0"
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 ktlint = { group = "com.pinterest.ktlint", name = "ktlint-cli", version.ref = "ktlint" }
+
+smarthome-domain = { group = "network.marsys.smarthome", name = "smarthome-domain", version.ref = "smarthome-domain" }
 
 [plugins]
 detekt = { id = "dev.detekt", version.ref = "detekt" }

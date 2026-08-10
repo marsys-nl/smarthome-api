@@ -1,7 +1,7 @@
 [versions]
 smarthome-api = "2026.03-SNAPSHOT"
 
-detekt = "2.0.0-alpha.2"
+detekt = "2.0.0-alpha.6"
 
 jvm-toolchain = "21"
 

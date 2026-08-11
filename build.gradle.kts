@@ -1,5 +1,10 @@
+import kotlinx.kover.gradle.plugin.dsl.AggregationType
+import kotlinx.kover.gradle.plugin.dsl.CoverageUnit
+import kotlinx.kover.gradle.plugin.dsl.GroupingEntityType
+
 plugins {
     alias(libs.plugins.detekt) apply true
+    alias(libs.plugins.kotlin.kover) apply true
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.maven.publish) apply false
@@ -24,6 +29,35 @@ detekt {
     source.from(
         "$rootDir/api/src/commonMain/kotlin",
     )
+}
+
+kover {
+    merge {
+        allProjects {
+            it.buildFile.exists()
+        }
+    }
+
+    reports {
+//        filters {
+//            excludes {
+//                // Exclude main entry point — tested indirectly via integration tests
+//                classes("network.marsys.smarthome.hub.ApplicationKt*")
+//            }
+//        }
+
+        verify {
+            rule {
+                groupBy.set(GroupingEntityType.CLASS)
+
+                minBound(
+                    minValue = 100,
+                    coverageUnits = CoverageUnit.BRANCH,
+                    aggregationForGroup = AggregationType.COVERED_PERCENTAGE,
+                )
+            }
+        }
+    }
 }
 
 tasks.register("ktlintCheck", JavaExec::class) {

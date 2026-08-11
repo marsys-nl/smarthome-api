@@ -1,8 +1,10 @@
-package network.marsys.smarthome.api.models
+package network.marsys.smarthome.api.models.integration
 
 import de.infix.testBalloon.framework.core.testSuite
 import dev.nmarsman.expect.api.expectThat
+import dev.nmarsman.expect.api.expectThrows
 import dev.nmarsman.expect.assertions.isEqualTo
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import network.marsys.smarthome.api.apiModuleSerializersModule
 import network.marsys.smarthome.api.models.integration.IntegrationResponse
@@ -65,6 +67,47 @@ val IntegrationResponseSnapshotTest by testSuite(
                     .with(IntegrationResponse::identifier) { isEqualTo(identifier) }
                     .with(IntegrationResponse::status) { isEqualTo(status) }
             }
+        }
+    }
+
+    test(name = "Deserializing integration response fails when identifier is missing") {
+        expectThrows<SerializationException> {
+            val encoded = """
+                |{
+                |    "status": {
+                |        "type": "Running"
+                |    }
+                |}
+            """.trimMargin()
+
+            json.decodeFromString<IntegrationResponse>(encoded)
+        }
+    }
+
+    test(name = "Deserializing integration response fails when status is missing") {
+        expectThrows<SerializationException> {
+            val encoded = """
+                |{
+                |    "identifier": "test-integration"
+                |}
+            """.trimMargin()
+
+            json.decodeFromString<IntegrationResponse>(encoded)
+        }
+    }
+
+    test(name = "Deserializing integration response fails with invalid status") {
+        expectThrows<SerializationException> {
+            val encoded = """
+                |{
+                |    "identifier": "test-integration",
+                |    "status": {
+                |        "type": "Invalid"
+                |    }
+                |}
+            """.trimMargin()
+
+            json.decodeFromString<IntegrationResponse>(encoded)
         }
     }
 }

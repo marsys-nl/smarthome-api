@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class HealthResponse(
     @Serializable
-    val app: String = "network.marsys.smarthome",
+    val app: String,
     @Serializable
-    val version: String = "2026.05",
+    val version: String,
 )

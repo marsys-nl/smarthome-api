@@ -8,6 +8,7 @@ jvm-toolchain = "21"
 
 kotlin = "2.4.10"
 kotlin-expect = "0.2"
+kotlin-kover = "0.9.9"
 kotlinx-serialization = "1.11.0"
 
 ktlint = "1.8.0"
@@ -29,6 +30,7 @@ test-balloon-core = { group = "de.infix.testBalloon", name = "testBalloon-framew
 [plugins]
 detekt = { id = "dev.detekt", version.ref = "detekt" }
 
+kotlin-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlin-kover" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 

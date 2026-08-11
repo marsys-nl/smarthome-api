@@ -35,3 +35,7 @@ jobs:
             - name: Analyze code conventions using detekt
               id: detekt
               run: ./gradlew detekt
+
+            - name: Verify code coverage using kover
+              id: kover
+              run: ./gradlew koverVerify

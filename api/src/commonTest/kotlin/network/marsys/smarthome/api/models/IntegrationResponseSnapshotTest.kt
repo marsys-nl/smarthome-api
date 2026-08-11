@@ -26,7 +26,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         IntegrationResponse.Status.Stopped,
     ).forEach { status ->
         testSuite(
-            name = "Integration response with status: ${status::class.simpleName}"
+            name = "Integration response with status: ${status::class.simpleName}",
         ) {
             test(name = "Serializing integration response succeeds") {
                 val integration = IntegrationResponse(
@@ -45,7 +45,7 @@ val IntegrationResponseSnapshotTest by testSuite(
                             |        "type": "${status::class.simpleName}"
                             |    }
                             |}
-                        """.trimMargin()
+                        """.trimMargin(),
                     )
             }
 

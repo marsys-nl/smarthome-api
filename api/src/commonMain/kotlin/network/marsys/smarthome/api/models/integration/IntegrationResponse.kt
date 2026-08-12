@@ -30,5 +30,9 @@ data class IntegrationResponse(
         @Serializable
         @SerialName("Stopped")
         data object Stopped : Status
+
+        @Serializable
+        @SerialName("Failed")
+        data object Failed : Status
     }
 }

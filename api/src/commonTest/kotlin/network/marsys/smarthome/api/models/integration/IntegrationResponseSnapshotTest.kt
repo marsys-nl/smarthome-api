@@ -26,6 +26,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         IntegrationResponse.Status.Degraded,
         IntegrationResponse.Status.Stopping,
         IntegrationResponse.Status.Stopped,
+        IntegrationResponse.Status.Failed,
     ).forEach { status ->
         testSuite(
             name = "Integration response with status: ${status::class.simpleName}",

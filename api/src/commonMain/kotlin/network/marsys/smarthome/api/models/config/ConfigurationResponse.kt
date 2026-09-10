@@ -5,4 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ConfigurationResponse(
     val baseUri: String,
+    val authUri: String,
 )

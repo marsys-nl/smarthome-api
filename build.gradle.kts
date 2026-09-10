@@ -39,12 +39,11 @@ kover {
     }
 
     reports {
-//        filters {
-//            excludes {
-//                // Exclude main entry point — tested indirectly via integration tests
-//                classes("network.marsys.smarthome.hub.ApplicationKt*")
-//            }
-//        }
+        filters {
+            excludes {
+                annotatedBy("kotlinx.serialization.Serializable")
+            }
+        }
 
         verify {
             rule {

@@ -19,6 +19,7 @@ val ConfigurationResponseSnapshotTest by testSuite(
     test(name = "Serializing configuration response succeeds") {
         val response = ConfigurationResponse(
             baseUri = "https://smarthome.com/",
+            authUri = "https://auth.smarthome.com/",
         )
 
         val encoded = json.encodeToString(response)
@@ -27,7 +28,8 @@ val ConfigurationResponseSnapshotTest by testSuite(
             .isEqualTo(
                 """
                     |{
-                    |    "baseUri": "https://smarthome.com/"
+                    |    "baseUri": "https://smarthome.com/",
+                    |    "authUri": "https://auth.smarthome.com/"
                     |}
                 """.trimMargin(),
             )
@@ -36,7 +38,8 @@ val ConfigurationResponseSnapshotTest by testSuite(
     test(name = "Deserializing configuration response succeeds") {
         val encoded = """
             |{
-            |    "baseUri": "https://smarthome.com/"
+            |    "baseUri": "https://smarthome.com/",
+            |    "authUri": "https://auth.smarthome.com/"
             |}
         """.trimMargin()
 
@@ -44,6 +47,7 @@ val ConfigurationResponseSnapshotTest by testSuite(
 
         expectThat(decoded)
             .with(ConfigurationResponse::baseUri) { isEqualTo("https://smarthome.com/") }
+            .with(ConfigurationResponse::authUri) { isEqualTo("https://auth.smarthome.com/") }
     }
 
     test(name = "Deserializing configuration response fails when baseUri is missing") {

@@ -24,7 +24,7 @@ val LightEntityResponseSnapshotTest by testSuite(
             identifier = "light.living-room",
             state = LightEntity.State(
                 onOff = true,
-                brightness = .5f,
+                brightness = 0.5,
             ),
         )
 
@@ -110,7 +110,7 @@ val LightEntityResponseSnapshotTest by testSuite(
                     .isNotNull()
                     .isA<LightEntity.State>()
                     .with(LightEntity.State::onOff) { isEqualTo(true) }
-                    .with(LightEntity.State::brightness) { isEqualTo(0.5f) }
+                    .with(LightEntity.State::brightness) { isEqualTo(0.5) }
             }
     }
 

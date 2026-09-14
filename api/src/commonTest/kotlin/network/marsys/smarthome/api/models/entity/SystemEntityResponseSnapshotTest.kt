@@ -41,15 +41,15 @@ val SystemEntityResponseSnapshotTest by testSuite(
                 ),
             ),
             processor = SystemEntity.Processor(
-                load = .15f,
-                temperature = 55f,
+                load = 0.15,
+                temperature = 55.0,
             ),
             memory = SystemEntity.Memory(
-                total = 8f,
-                available = 4f,
+                total = 8.0,
+                available = 4.0,
                 swap = SystemEntity.Swap(
-                    total = 2f,
-                    used = 1f,
+                    total = 2.0,
+                    used = 1.0,
                 ),
             ),
             SystemEntity.Uptime(

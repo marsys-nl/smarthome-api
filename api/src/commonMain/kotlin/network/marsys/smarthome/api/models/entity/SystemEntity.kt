@@ -44,21 +44,21 @@ data class SystemEntity(
 
     @Serializable
     data class Processor(
-        val load: Float,
-        val temperature: Float? = null,
+        val load: Double,
+        val temperature: Double? = null,
     )
 
     @Serializable
     data class Memory(
-        val total: Float,
-        val available: Float,
+        val total: Double,
+        val available: Double,
         val swap: Swap,
     )
 
     @Serializable
     data class Swap(
-        val total: Float,
-        val used: Float,
+        val total: Double,
+        val used: Double,
     )
 
     @Serializable

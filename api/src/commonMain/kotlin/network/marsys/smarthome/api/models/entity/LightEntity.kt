@@ -12,6 +12,6 @@ data class LightEntity(
     @Serializable
     data class State(
         val onOff: Boolean,
-        val brightness: Float? = null,
+        val brightness: Double? = null,
     ) : EntityResponse.State
 }

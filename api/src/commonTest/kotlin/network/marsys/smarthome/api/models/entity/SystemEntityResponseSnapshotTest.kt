@@ -10,6 +10,7 @@ import dev.nmarsman.expect.assertions.isNotNull
 import dev.nmarsman.expect.assertions.isNull
 import kotlinx.serialization.json.Json
 import network.marsys.smarthome.api.apiModuleSerializersModule
+import network.marsys.smarthome.domain.identifiers.EntityIdentifier
 import kotlin.time.Clock
 import kotlin.time.Instant
 
@@ -23,7 +24,10 @@ val SystemEntityResponseSnapshotTest by testSuite(
     }
 
     val system = SystemEntity(
-        identifier = "system.smarthome",
+        identifier = EntityIdentifier("system.smarthome"),
+        naming = EntityResponse.Naming(
+            key = "system.smarthome-hub",
+        ),
         state = SystemEntity.State(
             host = SystemEntity.Host(
                 device = SystemEntity.Device(
@@ -68,6 +72,9 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |{
                     |    "type": "system",
                     |    "identifier": "system.smarthome",
+                    |    "naming": {
+                    |        "key": "system.smarthome-hub"
+                    |    },
                     |    "state": {
                     |        "host": {
                     |            "device": {
@@ -129,6 +136,9 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |{
                     |    "type": "system",
                     |    "identifier": "system.smarthome",
+                    |    "naming": {
+                    |        "key": "system.smarthome-hub"
+                    |    },
                     |    "state": {
                     |        "host": {
                     |            "device": {
@@ -167,7 +177,10 @@ val SystemEntityResponseSnapshotTest by testSuite(
 
     test(name = "Serializing system entity response succeeds with unknown state") {
         val response = SystemEntity(
-            identifier = "system.smarthome",
+            identifier = EntityIdentifier("system.smarthome"),
+            naming = EntityResponse.Naming(
+                key = "system.smarthome-hub",
+            ),
             state = null,
         )
 
@@ -178,7 +191,10 @@ val SystemEntityResponseSnapshotTest by testSuite(
                 """
                     |{
                     |    "type": "system",
-                    |    "identifier": "system.smarthome"
+                    |    "identifier": "system.smarthome",
+                    |    "naming": {
+                    |        "key": "system.smarthome-hub"
+                    |    }
                     |}
                 """.trimMargin(),
             )

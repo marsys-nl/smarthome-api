@@ -18,7 +18,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         serializersModule = apiModuleSerializersModule
     }
 
-    val identifier = IntegrationIdentifier("test-integration")
+    val identifier = IntegrationIdentifier("integration.test")
 
     listOf(
         IntegrationResponse.Status.Starting,
@@ -43,7 +43,7 @@ val IntegrationResponseSnapshotTest by testSuite(
                     .isEqualTo(
                         """
                             |{
-                            |    "identifier": "test-integration",
+                            |    "identifier": "integration.test",
                             |    "status": {
                             |        "type": "${status::class.simpleName}"
                             |    }
@@ -55,7 +55,7 @@ val IntegrationResponseSnapshotTest by testSuite(
             test(name = "Deserializing integration response succeeds") {
                 val encoded = """
                     |{
-                    |    "identifier": "test-integration",
+                    |    "identifier": "integration.test",
                     |    "status": {
                     |        "type": "${status::class.simpleName}"
                     |    }
@@ -89,7 +89,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         expectThrows<SerializationException> {
             val encoded = """
                 |{
-                |    "identifier": "test-integration"
+                |    "identifier": "integration.test"
                 |}
             """.trimMargin()
 
@@ -101,7 +101,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         expectThrows<SerializationException> {
             val encoded = """
                 |{
-                |    "identifier": "test-integration",
+                |    "identifier": "integration.test",
                 |    "status": {
                 |        "type": "Invalid"
                 |    }

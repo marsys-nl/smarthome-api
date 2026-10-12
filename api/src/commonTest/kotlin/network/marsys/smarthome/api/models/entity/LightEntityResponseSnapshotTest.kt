@@ -9,6 +9,7 @@ import dev.nmarsman.expect.assertions.isNotNull
 import dev.nmarsman.expect.assertions.isNull
 import kotlinx.serialization.json.Json
 import network.marsys.smarthome.api.apiModuleSerializersModule
+import network.marsys.smarthome.domain.identifiers.EntityIdentifier
 
 val LightEntityResponseSnapshotTest by testSuite(
     name = "Light entity response snapshot tests",
@@ -21,7 +22,11 @@ val LightEntityResponseSnapshotTest by testSuite(
 
     test(name = "Serializing light entity response succeeds with all attributes present") {
         val response = LightEntity(
-            identifier = "light.living-room",
+            identifier = EntityIdentifier("light.living-room"),
+            naming = EntityResponse.Naming(
+                key = "light.living-room",
+                qualifier = "dining-table",
+            ),
             state = LightEntity.State(
                 onOff = true,
                 brightness = 0.5,
@@ -36,6 +41,10 @@ val LightEntityResponseSnapshotTest by testSuite(
                     |{
                     |    "type": "light",
                     |    "identifier": "light.living-room",
+                    |    "naming": {
+                    |        "key": "light.living-room",
+                    |        "qualifier": "dining-table"
+                    |    },
                     |    "state": {
                     |        "onOff": true,
                     |        "brightness": 0.5
@@ -47,7 +56,10 @@ val LightEntityResponseSnapshotTest by testSuite(
 
     test(name = "Serializing light entity response succeeds with optional attributes missing") {
         val response = LightEntity(
-            identifier = "light.living-room",
+            identifier = EntityIdentifier("light.living-room"),
+            naming = EntityResponse.Naming(
+                key = "light.living-room",
+            ),
             state = LightEntity.State(
                 onOff = true,
                 brightness = null,
@@ -62,6 +74,9 @@ val LightEntityResponseSnapshotTest by testSuite(
                     |{
                     |    "type": "light",
                     |    "identifier": "light.living-room",
+                    |    "naming": {
+                    |        "key": "light.living-room"
+                    |    },
                     |    "state": {
                     |        "onOff": true
                     |    }
@@ -72,7 +87,10 @@ val LightEntityResponseSnapshotTest by testSuite(
 
     test(name = "Serializing light entity response succeeds with unknown state") {
         val response = LightEntity(
-            identifier = "light.living-room",
+            identifier = EntityIdentifier("light.living-room"),
+            naming = EntityResponse.Naming(
+                key = "light.living-room",
+            ),
             state = null,
         )
 
@@ -83,7 +101,10 @@ val LightEntityResponseSnapshotTest by testSuite(
                 """
                     |{
                     |    "type": "light",
-                    |    "identifier": "light.living-room"
+                    |    "identifier": "light.living-room",
+                    |    "naming": {
+                    |        "key": "light.living-room"
+                    |    }
                     |}
                 """.trimMargin(),
             )
@@ -94,6 +115,10 @@ val LightEntityResponseSnapshotTest by testSuite(
             |{
             |    "type": "light",
             |    "identifier": "light.living-room",
+            |    "naming": {
+            |        "key": "light.living-room",
+            |        "qualifier": "dining-table"
+            |    },
             |    "state": {
             |        "onOff": true,
             |        "brightness": 0.5
@@ -104,7 +129,16 @@ val LightEntityResponseSnapshotTest by testSuite(
         val decoded = json.decodeFromString<EntityResponse>(string = encoded)
 
         expectThat(decoded)
-            .with(EntityResponse::identifier) { isEqualTo("light.living-room") }
+            .with(EntityResponse::identifier) {
+                get(EntityIdentifier::value)
+                    .isEqualTo("light.living-room")
+            }
+            .with(EntityResponse::naming) {
+                get(EntityResponse.Naming::key)
+                    .isEqualTo("light.living-room")
+                get(EntityResponse.Naming::qualifier)
+                    .isEqualTo("dining-table")
+            }
             .with(EntityResponse::state) {
                 this
                     .isNotNull()
@@ -119,6 +153,9 @@ val LightEntityResponseSnapshotTest by testSuite(
             |{
             |    "type": "light",
             |    "identifier": "light.living-room",
+            |    "naming": {
+            |        "key": "light.living-room"
+            |    },
             |    "state": {
             |        "onOff": true
             |    }
@@ -128,7 +165,16 @@ val LightEntityResponseSnapshotTest by testSuite(
         val decoded = json.decodeFromString<EntityResponse>(string = encoded)
 
         expectThat(decoded)
-            .with(EntityResponse::identifier) { isEqualTo("light.living-room") }
+            .with(EntityResponse::identifier) {
+                get(EntityIdentifier::value)
+                    .isEqualTo("light.living-room")
+            }
+            .with(EntityResponse::naming) {
+                get(EntityResponse.Naming::key)
+                    .isEqualTo("light.living-room")
+                get(EntityResponse.Naming::qualifier)
+                    .isNull()
+            }
             .with(EntityResponse::state) {
                 this
                     .isNotNull()
@@ -142,14 +188,26 @@ val LightEntityResponseSnapshotTest by testSuite(
         val encoded = """
             |{
             |    "type": "light",
-            |    "identifier": "light.living-room"
+            |    "identifier": "light.living-room",
+            |    "naming": {
+            |        "key": "light.living-room"
+            |    }
             |}
         """.trimMargin()
 
         val decoded = json.decodeFromString<EntityResponse>(string = encoded)
 
         expectThat(decoded)
-            .with(EntityResponse::identifier) { isEqualTo("light.living-room") }
+            .with(EntityResponse::identifier) {
+                get(EntityIdentifier::value)
+                    .isEqualTo("light.living-room")
+            }
+            .with(EntityResponse::naming) {
+                get(EntityResponse.Naming::key)
+                    .isEqualTo("light.living-room")
+                get(EntityResponse.Naming::qualifier)
+                    .isNull()
+            }
             .with(EntityResponse::state) { isNull() }
     }
 
@@ -171,6 +229,9 @@ val LightEntityResponseSnapshotTest by testSuite(
                 |{
                 |    "type": "light",
                 |    "identifier": "light.living-room",
+                |    "naming": {
+                |        "key": "light.living-room"
+                |    },
                 |    "state": {
                 |        "brightness": 0.5
                 |    }

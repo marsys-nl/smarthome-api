@@ -3,15 +3,10 @@ package network.marsys.smarthome.api.models.entity
 import de.infix.testBalloon.framework.core.testSuite
 import dev.nmarsman.expect.api.expectThat
 import dev.nmarsman.expect.api.expectThrows
-import dev.nmarsman.expect.assertions.hasMessageStartingWith
-import dev.nmarsman.expect.assertions.isA
 import dev.nmarsman.expect.assertions.isEqualTo
-import dev.nmarsman.expect.assertions.isNotNull
-import dev.nmarsman.expect.assertions.isNull
 import kotlinx.serialization.json.Json
 import network.marsys.smarthome.api.apiModuleSerializersModule
 import network.marsys.smarthome.domain.identifiers.EntityIdentifier
-import kotlin.time.Clock
 import kotlin.time.Instant
 
 val SystemEntityResponseSnapshotTest by testSuite(
@@ -56,7 +51,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     used = 1.0,
                 ),
             ),
-            SystemEntity.Uptime(
+            SystemEntity.StartedAt(
                 host = Instant.parse("2026-09-01T00:00:00Z"),
                 application = Instant.parse("2026-09-01T00:01:00Z"),
             ),
@@ -103,7 +98,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |                "used": 1.0
                     |            }
                     |        },
-                    |        "uptime": {
+                    |        "startedAt": {
                     |            "host": "2026-09-01T00:00:00Z",
                     |            "application": "2026-09-01T00:01:00Z"
                     |        }
@@ -165,7 +160,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |                "used": 1.0
                     |            }
                     |        },
-                    |        "uptime": {
+                    |        "startedAt": {
                     |            "host": "2026-09-01T00:00:00Z",
                     |            "application": "2026-09-01T00:01:00Z"
                     |        }

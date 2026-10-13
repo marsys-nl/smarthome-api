@@ -17,7 +17,7 @@ data class SystemEntity(
         val host: Host,
         val processor: Processor,
         val memory: Memory,
-        val uptime: Uptime,
+        val startedAt: StartedAt,
     ) : EntityResponse.State
 
     @Serializable
@@ -64,7 +64,7 @@ data class SystemEntity(
     )
 
     @Serializable
-    data class Uptime(
+    data class StartedAt(
         val host: Instant,
         val application: Instant,
     )

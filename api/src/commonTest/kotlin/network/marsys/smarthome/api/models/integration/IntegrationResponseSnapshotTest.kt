@@ -33,7 +33,7 @@ val IntegrationResponseSnapshotTest by testSuite(
         ) {
             test(name = "Serializing integration response succeeds") {
                 val integration = IntegrationResponse(
-                    identifier = identifier,
+                    identifier = identifier.value,
                     status = status,
                 )
 
@@ -65,7 +65,7 @@ val IntegrationResponseSnapshotTest by testSuite(
                 val decoded = json.decodeFromString<IntegrationResponse>(encoded)
 
                 expectThat(decoded)
-                    .with(IntegrationResponse::identifier) { isEqualTo(identifier) }
+                    .with(IntegrationResponse::identifier) { isEqualTo(identifier.value) }
                     .with(IntegrationResponse::status) { isEqualTo(status) }
             }
         }

@@ -4,14 +4,14 @@ import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 import network.marsys.smarthome.api.models.entity.EntityResponse
-import network.marsys.smarthome.api.models.entity.LightEntity
-import network.marsys.smarthome.api.models.entity.SystemEntity
+import network.marsys.smarthome.api.models.entity.LightEntityResponse
+import network.marsys.smarthome.api.models.entity.SystemEntityResponse
 import network.marsys.smarthome.api.models.integration.IntegrationResponse
 
 val apiModuleSerializersModule = SerializersModule {
     polymorphic(EntityResponse::class) {
-        subclass(LightEntity::class)
-        subclass(SystemEntity::class)
+        subclass(LightEntityResponse::class)
+        subclass(SystemEntityResponse::class)
     }
 
     polymorphic(IntegrationResponse.Status::class) {

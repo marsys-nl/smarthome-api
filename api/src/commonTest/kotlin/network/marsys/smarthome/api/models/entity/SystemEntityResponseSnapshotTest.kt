@@ -6,7 +6,6 @@ import dev.nmarsman.expect.api.expectThrows
 import dev.nmarsman.expect.assertions.isEqualTo
 import kotlinx.serialization.json.Json
 import network.marsys.smarthome.api.apiModuleSerializersModule
-import network.marsys.smarthome.domain.identifiers.EntityIdentifier
 import kotlin.time.Instant
 
 val SystemEntityResponseSnapshotTest by testSuite(
@@ -18,40 +17,40 @@ val SystemEntityResponseSnapshotTest by testSuite(
         serializersModule = apiModuleSerializersModule
     }
 
-    val system = SystemEntity(
-        identifier = EntityIdentifier("system.smarthome"),
+    val system = SystemEntityResponse(
+        identifier = "system.smarthome",
         naming = EntityResponse.Naming(
             key = "system.smarthome-hub",
         ),
-        state = SystemEntity.State(
-            host = SystemEntity.Host(
-                device = SystemEntity.Device(
+        state = SystemEntityResponse.State(
+            host = SystemEntityResponse.Host(
+                device = SystemEntityResponse.Device(
                     manufacturer = "Raspberry",
                     model = "Raspberry 5",
                     architecture = "arm64",
                     physicalCores = 4,
                     logicalCores = 8,
                 ),
-                operatingSystem = SystemEntity.OperatingSystem(
+                operatingSystem = SystemEntityResponse.OperatingSystem(
                     description = "Raspbian OS",
                     family = "Linux",
                     version = "11.0",
                     bitness = 64,
                 ),
             ),
-            processor = SystemEntity.Processor(
+            processor = SystemEntityResponse.Processor(
                 load = 0.15,
                 temperature = 55.0,
             ),
-            memory = SystemEntity.Memory(
+            memory = SystemEntityResponse.Memory(
                 total = 8.0,
                 available = 4.0,
-                swap = SystemEntity.Swap(
+                swap = SystemEntityResponse.Swap(
                     total = 2.0,
                     used = 1.0,
                 ),
             ),
-            SystemEntity.StartedAt(
+            SystemEntityResponse.StartedAt(
                 host = Instant.parse("2026-09-01T00:00:00Z"),
                 application = Instant.parse("2026-09-01T00:01:00Z"),
             ),
@@ -171,8 +170,8 @@ val SystemEntityResponseSnapshotTest by testSuite(
     }
 
     test(name = "Serializing system entity response succeeds with unknown state") {
-        val response = SystemEntity(
-            identifier = EntityIdentifier("system.smarthome"),
+        val response = SystemEntityResponse(
+            identifier = "system.smarthome",
             naming = EntityResponse.Naming(
                 key = "system.smarthome-hub",
             ),

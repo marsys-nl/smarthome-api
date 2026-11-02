@@ -2,11 +2,10 @@ package network.marsys.smarthome.api.models.integration
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import network.marsys.smarthome.domain.identifiers.IntegrationIdentifier
 
 @Serializable
 data class IntegrationResponse(
-    val identifier: IntegrationIdentifier,
+    val identifier: String,
     val status: Status,
 ) {
     @Serializable

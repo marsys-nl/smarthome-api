@@ -2,13 +2,12 @@ package network.marsys.smarthome.api.models.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import network.marsys.smarthome.domain.identifiers.EntityIdentifier
 import kotlin.time.Instant
 
 @Serializable
 @SerialName("system")
-data class SystemEntity(
-    override val identifier: EntityIdentifier,
+data class SystemEntityResponse(
+    override val identifier: String,
     override val naming: EntityResponse.Naming,
     override val state: State? = null,
 ) : EntityResponse {
@@ -60,7 +59,7 @@ data class SystemEntity(
     @Serializable
     data class Swap(
         val total: Double,
-        val used: Double,
+        val available: Double,
     )
 
     @Serializable

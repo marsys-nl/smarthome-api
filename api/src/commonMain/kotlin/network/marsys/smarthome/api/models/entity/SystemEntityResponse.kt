@@ -59,7 +59,7 @@ data class SystemEntityResponse(
     @Serializable
     data class Swap(
         val total: Double,
-        val used: Double,
+        val available: Double,
     )
 
     @Serializable

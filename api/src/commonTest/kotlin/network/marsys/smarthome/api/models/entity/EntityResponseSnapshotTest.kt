@@ -26,7 +26,7 @@ val EntityResponseSnapshotTest by testSuite(
             json.decodeFromString<EntityResponse>(string = encoded)
         }.hasMessageStartingWith(
             prefix = "Class discriminator was missing and no default serializers " +
-                "were registered in the polymorphic scope of 'EntityResponse'.",
+                "were registered in the polymorphic scope of 'EntityResponse'",
         )
     }
 }

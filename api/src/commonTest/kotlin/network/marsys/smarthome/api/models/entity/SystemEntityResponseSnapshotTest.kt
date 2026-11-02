@@ -47,7 +47,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                 available = 4.0,
                 swap = SystemEntityResponse.Swap(
                     total = 2.0,
-                    used = 1.0,
+                    available = 1.0,
                 ),
             ),
             SystemEntityResponse.StartedAt(
@@ -94,7 +94,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |            "available": 4.0,
                     |            "swap": {
                     |                "total": 2.0,
-                    |                "used": 1.0
+                    |                "available": 1.0
                     |            }
                     |        },
                     |        "startedAt": {
@@ -156,7 +156,7 @@ val SystemEntityResponseSnapshotTest by testSuite(
                     |            "available": 4.0,
                     |            "swap": {
                     |                "total": 2.0,
-                    |                "used": 1.0
+                    |                "available": 1.0
                     |            }
                     |        },
                     |        "startedAt": {

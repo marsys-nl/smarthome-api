@@ -32,7 +32,7 @@ val BlindEntityResponseSnapshotTest by testSuite(
                     movement = Idle.name,
                     opened = true,
                     position = 50.0,
-                )
+                ),
             ),
         )
 

@@ -4,11 +4,7 @@ import de.infix.testBalloon.framework.core.testSuite
 import dev.nmarsman.expect.api.expectThat
 import dev.nmarsman.expect.assertions.isA
 import dev.nmarsman.expect.assertions.isEqualTo
-import dev.nmarsman.expect.assertions.isNull
-import network.marsys.smarthome.api.models.entity.EntityResponse
 import network.marsys.smarthome.domain.entity.EntityIdentifier
-import network.marsys.smarthome.domain.entity.EntityNaming
-import network.marsys.smarthome.domain.i18n.TranslationKey
 
 val EntityIdentifierMapperTest by testSuite(
     name = "Entity identifier mapper tests",

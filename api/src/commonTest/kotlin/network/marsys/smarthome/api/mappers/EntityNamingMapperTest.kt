@@ -5,8 +5,8 @@ import dev.nmarsman.expect.api.expectThat
 import dev.nmarsman.expect.assertions.isEqualTo
 import dev.nmarsman.expect.assertions.isNull
 import network.marsys.smarthome.api.models.entity.EntityResponse
+import network.marsys.smarthome.domain.TranslationKey
 import network.marsys.smarthome.domain.entity.EntityNaming
-import network.marsys.smarthome.domain.i18n.TranslationKey
 
 val EntityNamingMapperTest by testSuite(
     name = "Entity naming mapper tests",

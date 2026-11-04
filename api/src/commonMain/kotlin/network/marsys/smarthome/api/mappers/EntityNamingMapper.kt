@@ -1,8 +1,8 @@
 package network.marsys.smarthome.api.mappers
 
 import network.marsys.smarthome.api.models.entity.EntityResponse
+import network.marsys.smarthome.domain.TranslationKey
 import network.marsys.smarthome.domain.entity.EntityNaming
-import network.marsys.smarthome.domain.i18n.TranslationKey
 
 object EntityNamingApiMapper : Mapper<EntityNaming, EntityResponse.Naming> {
     override fun invoke(source: EntityNaming): EntityResponse.Naming =

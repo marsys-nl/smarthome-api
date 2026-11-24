@@ -42,9 +42,10 @@ mavenPublishing {
     )
 
     pom {
-        name.set("Smarthome - API")
-        description.set("API models for Smarthome system, used by both the app and the hub in order to communicate")
+        name.set("SmartHome - API")
+        description.set("API models for SmartHome system, used by both the app and the hub in order to communicate")
         inceptionYear.set("2025")
+        url.set("https://github.com/marsys-nl/smarthome-api")
 
         organization {
             name.set("Marsys")
